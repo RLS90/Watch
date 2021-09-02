@@ -11,12 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Dev
+    env:
+      CONTENT: World!
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: EchoSomething
-        run: echo Hello, ${{ secrets.day }}
+      - name: EchoSecret
+        run: echo Secret is ${{ secrets.day }}
+
+      - name: EchoEnvVar
+        run: echo Hello, $CONTENT
 
   # DeployDev:
   #   name: Deploy to Dev 
