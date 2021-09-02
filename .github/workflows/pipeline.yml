@@ -9,20 +9,22 @@ on:
 jobs:
   BuildJob:
     runs-on: ubuntu-latest
+    environment:
+      name: Dev
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
       - name: EchoSomething
-        run: echo Hello, world!
+        run: echo Hello, ${env.day}
 
-  DeployDev:
-    name: Deploy to Dev 
-    if: github.event_name == 'push'
-    needs: [BuildJob]
-    runs-on: ubuntu-latest
-    environment:
-      name: Dev
-    steps:
-      - name: Deploy
-        run: echo I ${{ env.day }}
+  # DeployDev:
+  #   name: Deploy to Dev 
+  #   if: github.event_name == 'push'
+  #   needs: [BuildJob]
+  #   runs-on: ubuntu-latest
+  #   environment:
+  #     name: Dev
+  #   steps:
+  #     - name: Deploy
+  #       run: echo I ${{ env.day }}
