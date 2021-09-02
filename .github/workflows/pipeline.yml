@@ -23,6 +23,12 @@ jobs:
       - name: EchoEnvVar
         run: echo Hello, $CONTENT
 
+  NewJob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: echo Hello, $CONTENT
+
   # DeployDev:
   #   name: Deploy to Dev 
   #   if: github.event_name == 'push'
