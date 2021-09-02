@@ -25,4 +25,4 @@ jobs:
       name: Dev
     steps:
       - name: Deploy
-        run: echo I am deploying!
+        run: echo I ${{ env.day }}
