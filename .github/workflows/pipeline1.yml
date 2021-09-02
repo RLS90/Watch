@@ -1,0 +1,33 @@
+name: Workflow1
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+
+jobs:
+  BuildJob:
+    runs-on: ubuntu-latest
+    environment:
+      name: Dev
+    env:
+      CONTENT: World!
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: EchoSecret
+        run: echo Secret is ${{ secrets.day }}
+
+      - name: EchoEnvVar
+        run: echo Hello, $CONTENT
+
+  NewJob:
+    needs: [BuildJob]
+    runs-on: ubuntu-latest
+    env:
+      CONTENT: NewJob
+    steps:
+      - name: test
+        run: echo Hello, $CONTENT
