@@ -24,18 +24,13 @@ jobs:
         run: echo Hello, $CONTENT
 
   NewJob:
+    needs: [BuildJob]
     runs-on: ubuntu-latest
+    env:
+      CONTENT: NewJob
     steps:
       - name: test
         run: echo Hello, $CONTENT
 
-  # DeployDev:
-  #   name: Deploy to Dev 
-  #   if: github.event_name == 'push'
-  #   needs: [BuildJob]
-  #   runs-on: ubuntu-latest
-  #   environment:
-  #     name: Dev
-  #   steps:
-  #     - name: Deploy
-  #       run: echo I ${{ env.day }}
+      - name: test2
+        run: echo Hello, ${{ env.content }}
