@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: EchoSomething
-        run: echo Hello, ${env.day}
+        run: echo Hello, "${{ secrets.day }}"
 
   # DeployDev:
   #   name: Deploy to Dev 
